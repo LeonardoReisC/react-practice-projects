@@ -69,3 +69,9 @@ main {
     font-size: 1.4rem;
     color: #61dafb;
 }
+
+@media (max-width: 450px) {
+    .nav--title {
+        display: none;
+    }
+}
