@@ -23,7 +23,7 @@ export default function Card({
             {badgeText && <div className="card--badge">{badgeText}</div>}
             <img
                 className="card--image"
-                src={`./src/assets/images/${coverImg}`}
+                src={`./images/${coverImg}`}
                 alt="Main card image"
             />
             <div className="card--stats">
