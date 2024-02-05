@@ -2,13 +2,14 @@ import React from "react";
 import star from "../assets/images/star.svg";
 
 export default function Card({
-    img,
-    rating,
-    reviewCount,
-    location,
-    title,
-    price,
-    openSpots,
+    item: {
+        coverImg,
+        stats: { rating, reviewCount },
+        location,
+        title,
+        price,
+        openSpots,
+    },
 }) {
     let badgeText;
     if (!openSpots) {
@@ -16,12 +17,13 @@ export default function Card({
     } else if (location === "Online") {
         badgeText = "ONLINE";
     }
+
     return (
         <div className="card">
             {badgeText && <div className="card--badge">{badgeText}</div>}
             <img
                 className="card--image"
-                src={`./src/assets/images/${img}`}
+                src={`./src/assets/images/${coverImg}`}
                 alt="Main card image"
             />
             <div className="card--stats">
