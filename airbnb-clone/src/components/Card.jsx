@@ -8,9 +8,17 @@ export default function Card({
     location,
     title,
     price,
+    openSpots,
 }) {
+    let badgeText;
+    if (!openSpots) {
+        badgeText = "SOLD OUT";
+    } else if (location === "Online") {
+        badgeText = "ONLINE";
+    }
     return (
         <div className="card">
+            {badgeText && <div className="card--badge">{badgeText}</div>}
             <img
                 className="card--image"
                 src={`./src/assets/images/${img}`}
