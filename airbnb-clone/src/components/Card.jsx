@@ -24,8 +24,8 @@ export default function Card({
                 <span className="gray">{location}</span>
             </div>
 
-            <h2>{title}</h2>
-            <p>
+            <p className="card--title">{title}</p>
+            <p className="card--price">
                 <span className="bold">From ${price}</span> / person
             </p>
         </div>
