@@ -14,6 +14,8 @@ export default function App() {
     const currentNote =
         notes.find((note) => note.id === currentNoteId) ?? notes[0];
 
+    const sortedNotes = notes.sort((a, b) => b.updateAt - a.updateAt);
+
     React.useEffect(() => {
         const unsubscribe = onSnapshot(notesCollection, (snapshot) => {
             const notesArray = snapshot.docs.map((doc) => ({
@@ -33,8 +35,8 @@ export default function App() {
     }, [notes]);
 
     async function createNewNote() {
-        const now = Date.now()
-        
+        const now = Date.now();
+
         const newNote = {
             body: "# Type your markdown note's title here",
             createdAt: now,
@@ -46,7 +48,11 @@ export default function App() {
 
     async function updateNote(text) {
         const docRef = doc(db, "notes", currentNoteId);
-        await setDoc(docRef, { body: text, updateAt: Date.now() }, { merge: true });
+        await setDoc(
+            docRef,
+            { body: text, updateAt: Date.now() },
+            { merge: true }
+        );
     }
 
     async function deleteNote(noteId) {
@@ -63,7 +69,7 @@ export default function App() {
                     className="split"
                 >
                     <Sidebar
-                        notes={notes}
+                        notes={sortedNotes}
                         currentNote={currentNote}
                         setCurrentNoteId={setCurrentNoteId}
                         newNote={createNewNote}
