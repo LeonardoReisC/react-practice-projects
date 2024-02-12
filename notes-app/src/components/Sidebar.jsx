@@ -7,14 +7,18 @@ export default function Sidebar(props) {
                 className={`title ${
                     note.id === props.currentNote.id ? "selected-note" : ""
                 }`}
-                onClick={() => {
+                onClick={(event) => {
+                    if (event.isDefaultPrevented()) return;
                     props.setCurrentNoteId(note.id);
                 }}
             >
                 <h4 className="text-snippet">{note.body.split("\n", 2)[0]}</h4>
                 <button
                     className="delete-btn"
-                    onClick={() => props.deleteNote(note.id)}
+                    onClick={(event) => {
+                        event.preventDefault();
+                        props.deleteNote(note.id);
+                    }}
                 >
                     <i className="gg-trash trash-icon"></i>
                 </button>
