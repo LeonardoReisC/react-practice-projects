@@ -33,8 +33,12 @@ export default function App() {
     }, [notes]);
 
     async function createNewNote() {
+        const now = Date.now()
+        
         const newNote = {
             body: "# Type your markdown note's title here",
+            createdAt: now,
+            updateAt: now,
         };
         const newNoteRef = await addDoc(notesCollection, newNote);
         setCurrentNoteId(newNoteRef.id);
@@ -42,7 +46,7 @@ export default function App() {
 
     async function updateNote(text) {
         const docRef = doc(db, "notes", currentNoteId);
-        await setDoc(docRef, { body: text }, { merge: true });
+        await setDoc(docRef, { body: text, updateAt: Date.now() }, { merge: true });
     }
 
     async function deleteNote(noteId) {
