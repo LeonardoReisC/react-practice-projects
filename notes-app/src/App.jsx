@@ -9,9 +9,13 @@ export default function App() {
     const [notes, setNotes] = React.useState(
         () => JSON.parse(localStorage.getItem("notes")) ?? []
     );
+
     const [currentNoteId, setCurrentNoteId] = React.useState(
-        (notes[0] && notes[0].id) || ""
+        notes[0]?.id || ""
     );
+
+    const currentNote =
+        notes.find((note) => note.id === currentNoteId) ?? notes[0];
 
     React.useEffect(() => localStorage.setItem("notes", JSON.stringify(notes)));
 
@@ -39,14 +43,6 @@ export default function App() {
         ]);
     }
 
-    function findCurrentNote() {
-        return (
-            notes.find((note) => {
-                return note.id === currentNoteId;
-            }) || notes[0]
-        );
-    }
-
     return (
         <main>
             {notes.length > 0 ? (
@@ -57,14 +53,14 @@ export default function App() {
                 >
                     <Sidebar
                         notes={notes}
-                        currentNote={findCurrentNote()}
+                        currentNote={currentNote}
                         setCurrentNoteId={setCurrentNoteId}
                         newNote={createNewNote}
                         deleteNote={deleteNote}
                     />
                     {currentNoteId && notes.length > 0 && (
                         <Editor
-                            currentNote={findCurrentNote()}
+                            currentNote={currentNote}
                             updateNote={updateNote}
                         />
                     )}
