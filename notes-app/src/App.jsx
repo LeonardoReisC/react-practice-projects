@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./components/Sidebar";
 import Editor from "./components/Editor";
 import Split from "react-split";
-import { addDoc, deleteDoc, doc, onSnapshot } from "firebase/firestore";
+import { addDoc, deleteDoc, doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db, notesCollection } from "./firebase";
 import "./App.css";
 
@@ -40,12 +40,9 @@ export default function App() {
         setCurrentNoteId(newNoteRef.id);
     }
 
-    function updateNote(text) {
-        const [curr] = notes.filter((note) => note.id === currentNoteId);
-        setNotes((oldNotes) => [
-            { ...curr, body: text },
-            ...oldNotes.filter((note) => note.id !== currentNoteId),
-        ]);
+    async function updateNote(text) {
+        const docRef = doc(db, "notes", currentNoteId);
+        await setDoc(docRef, { body: text }, { merge: true });
     }
 
     async function deleteNote(noteId) {
