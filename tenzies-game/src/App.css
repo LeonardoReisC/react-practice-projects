@@ -40,6 +40,7 @@ main {
     gap: 20px;
     width: 100%;
     max-width: 700px;
+    margin-bottom: 20px;
 }
 
 .die {
@@ -87,4 +88,20 @@ main {
 
 .main--roll-button:active {
     background-color: #1802a9;
+}
+
+@media screen and (max-width: 400px) {
+    .main--dice {
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .main--dice .die:last-child {
+        grid-column: span 3;
+    }
+
+    .main--dice .die:last-child::before {
+        content: none;
+    }
 }
