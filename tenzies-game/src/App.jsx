@@ -14,11 +14,16 @@ function App() {
         return randomNumbersArray;
     }
 
+    function rollDice() {
+        setDice(allNewDice())
+    }
+
     const diceElements = dice.map((die) => <Die value={die} />);
 
     return (
         <main>
             <div className="main--dice">{diceElements}</div>
+            <button className="main--roll-button" onClick={rollDice}>Roll</button>
         </main>
     );
 }

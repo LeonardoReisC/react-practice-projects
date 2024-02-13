@@ -8,6 +8,7 @@ body {
     margin: 0;
     background-color: #0b2434;
     padding: 30px 20px;
+    font-family: "Karla", sans-serif;
 }
 
 main {
@@ -18,7 +19,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .main--dice {
@@ -50,4 +51,23 @@ main {
     transform: translate(-50%, -50%);
     margin: 0;
     font-size: 1.5rem;
+}
+
+.main--roll-button {
+    background-color: #5035ff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+
+.main--roll-button:focus {
+    outline: none;
+}
+
+.main--roll-button:active {
+    background-color: #1802a9;
 }
