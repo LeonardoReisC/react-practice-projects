@@ -34,9 +34,15 @@ function App() {
     }
 
     function rollDice() {
-        setDice((oldDice) =>
-            oldDice.map((die) => (die.isHeld ? die : generateNewDie()))
-        );
+        if (!tenzies) {
+            setDice((oldDice) =>
+                oldDice.map((die) => (die.isHeld ? die : generateNewDie()))
+            );
+            return;
+        }
+
+        setDice(allNewDice());
+        setTenzies(false);
     }
 
     function holdDice(dieId) {
