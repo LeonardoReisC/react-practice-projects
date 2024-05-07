@@ -1,8 +1,37 @@
-# React + Vite
+# meme-generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project serves as a recapitulation of all React concepts learned so far. It's a fun and interactive application that fetches memes from the web and allows users to generate custom memes using React components and state management.
 
-Currently, two official plugins are available:
+## Preview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Meme Generator Preview](../images/meme.png)
+
+## Getting Started
+
+To run the Tenzies Game locally, follow these steps:
+
+- **Clone the Repository**
+
+  ```bash
+  git clone https://github.com/LeonardoReisC/react-practice-projects.git
+  ```
+
+- **Navigate to the Project Directory**
+
+  ```bash
+  cd ./meme-generator/
+  ```
+
+- **Install Dependencies**
+
+  ```bash
+  npm install
+  ```
+
+- **Start the Application**
+
+  ```bash
+  npm run dev
+  ```
+
+***
